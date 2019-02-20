@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Angular Directives</title>
+
+	<meta name="description" content="Angular session 4 - Directive's">
+	<meta name="author" content="Sunil Kashyap">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+	<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+	<style>
+		.mb0{
+			margin-bottom: 0px !important;
+		}
+		h2{
+			text-transform: none !important;
+		}
+		.skAlignedCode{
+			text-align: left;
+		}
+		.skAlignedCode code{
+			padding-left:20%;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="reveal">
+
+		<!-- Any section element inside of this container is displayed as a slide -->
+		<div class="slides">
+			<section data-background="#2A3990">
+				<h1>Angular</h1>
+				<h4>Session 4 - Directive</h4>
+				<!-- <p>
+						<small>Created by <a href="http://dev-sunil.com">Sunil Kashyap</a></small>
+					</p> -->
+			</section>
+
+			<section data-background="#2A3990">
+				<h2>What is Directive ?</h2>
+				<ul>
+					<li>Directives is used to attach custom behavior to elements in the DOM.</li>
+					<li>Directives can create, remove or manipulate existing DOM elements or its property.</li>
+				</ul>
+			</section>
+
+			<section data-background="#2A3990">
+				<h2>Types of Directive.</h2>
+				<ol>
+					<li class="fragment">
+						<h4 class="mb0">Attribute Directives.</h4>
+						<small>Change Attribute of an Existing DOM Element.</small>
+						<code class="hljs" style="word-wrap: break-word;font-size:0.5em">&lt;some-element [ngStyle]="{‘font-style’:’12px’}" &gt;...&lt;/some-element&gt;</code>
+						<br/>
+					</li>
+
+
+
+					<li class="fragment">
+						<h4 class="mb0">Structural directives.</h4>
+						<small>Update Existing DOM Element or Create New DOM Element.</small>
+						<code class="hljs" style="word-wrap: break-word;font-size:0.5em">&lt;p *ngIf="true"&gt;&lt;/p&gt;</code>
+					</li>
+					
+				</ol>
+			</section>
+
+			<section data-background="#2A3990">
+				<h2>*ngIf</h2>
+				<small>Include template, based on value.</small>
+				<p class="fragment">Template: <code class="hljs" style="word-wrap: break-word;font-size:0.5em">&lt;p *ngIf="true/false/someFn()"&gt;...&lt;/p&gt;</code></p>
+				<p><span class="fragment">Add or Remove 'P' tag based on value.</span></p>
+
+			</section>
+
+			<section data-background="#2A3990">
+				<section>
+					<h2>*ngFor</h2>
+					<small>Iterate Array and create elements based on length of the Array.</small>
+
+					<p class="fragment">Variable: <code class="hljs" style="word-wrap: break-word;font-size:0.5em">let Array = [ 1, 2, 3 ]</code></p>
+					
+					<p class="fragment">Angular Template: <code class="hljs" style="word-wrap: break-word;font-size:0.5em">&lt;p *ngFor="let i of Array"&gt;{ i }&lt;/p&gt;</code></p>
+					
+					<p class="fragment">DOM Template: <code class="hljs" style="word-wrap: break-word;font-size:0.5em">&lt;p&gt;0&lt;/p&gt;<br/>&lt;p&gt;1&lt;/p&gt;<br/>&lt;p&gt;2&lt;/p&gt;</code></p>
+				</section>
+				<section>
+						<h2>*ngFor</h2>
+
+						<p class="fragment">Variable: <code class="hljs" style="word-wrap: break-word;font-size:0.5em">let Array = [ 'MRR', 'Artifi', 'Amla' ]</code></p>
+						
+						<p class="fragment">Angular Template: <code class="hljs" style="word-wrap: break-word;font-size:0.5em">&lt;p *ngFor="let i of Array"&gt;{ i }&lt;/p&gt;</code></p>
+						
+						<p class="fragment">DOM Template: <code class="hljs" style="word-wrap: break-word;font-size:0.5em">&lt;p&gt;MRR&lt;/p&gt;<br/>&lt;p&gt;Artifi&lt;/p&gt;<br/>&lt;p&gt;Amla&lt;/p&gt;</code></p>
+					
+				</section>
+			</section>
+
+			<section data-background="#2A3990">
+					<h2>[ngSwitch]</h2>
+
+					<p class=" skAlignedCode">
+						<code class="hljs" style="word-wrap: break-word;font-size:0.5em">// Initialize Variable</code>
+						<code class="hljs" style="word-wrap: break-word;font-size:0.5em">let name = <span style="display: inline-block;" class="fragment fade-up highlight-green">'MRR'</span></code>
+						<code class="hljs" style="word-wrap: break-word;font-size:0.5em"> <br/></code>
+						<code class="hljs" style="word-wrap: break-word;font-size:0.5em">// Template Code</code>
+						<code class="hljs" style="word-wrap: break-word;font-size:0.5em">&lt;div [ngSwitch]="name"&gt;
+							<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div *ngSwitchCase="'MRR'"&gt; name = MRR &lt;/div&gt;
+							<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div *ngSwitchCase="'Artifi'"&gt; name = Artifi &lt;/div&gt;
+							<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div *ngSwitchCase="'Amla'"&gt; name = Amla &lt;/div&gt;
+							<br/>
+
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div *NgSwitchDefault&gt; Default  &lt;/div&gt;
+							<br/>
+							&lt;/div&gt;</code>
+						<code class="hljs" style="word-wrap: break-word;font-size:0.5em"> <br/></code>
+						<code class="hljs" style="word-wrap: break-word;font-size:0.5em">// Output</code>
+						<code class="hljs" style="word-wrap: break-word;font-size:0.5em">&lt;div&gt; name = <span style="display: inline-block;" class="fragment fade-up highlight-green">'MRR'</span>  &lt;/div&gt;</code>
+					</p>
+					
+			</section>
+
+			
+			<section data-background="#2A3990">
+					<h2>[ngClass]</h2>
+
+					<p class=" skAlignedCode">
+						<code class="hljs" style="word-wrap: break-word;font-size:0.5em">// Template Code</code>
+						<code class="hljs" style="word-wrap: break-word;font-size:0.5em">
+							&lt;div [ngClass]="{'active': isActive, 'disabled': isDisabled}"&gt;
+						</code>
+						<code class="hljs" style="word-wrap: break-word;font-size:0.5em"> <br/></code>
+						<code class="hljs fade-in-then-out" style="word-wrap: break-word;font-size:0.5em">// Output if isActive = true</code>
+						<code class="hljs fade-in-then-out" style="word-wrap: break-word;font-size:0.5em">&lt;div class="active" &gt; </span>  &lt;/div&gt;</code>
+						<code class="hljs fade-in-then-out" style="word-wrap: break-word;font-size:0.5em"> <br/></code>
+						<code class="hljs fade-in-then-out" style="word-wrap: break-word;font-size:0.5em">// Output if isDisabled = true</code>
+						<code class="hljs fade-in-then-out" style="word-wrap: break-word;font-size:0.5em">&lt;div class="disabled" &gt; </span>  &lt;/div&gt;</code>
+					</p>
+					
+			</section>
+
+
+			<section data-background="#2A3990">
+				<h2>Creating Custom Directive</h2>
+				<small>Creating custom Directive to change the color of text</small>
+				<p class="fragment fade-up"><small>Generate new Directive using</small><br/> ng g directive DIRECTIVE_NAME</p>
+				<img class="fragment fade-up" data-src="imgs/directive_declaration.PNG">
+				<p class="fragment fade-up"><small>CLI command will automatically import and declare directive into app.module.ts file.</small></p>
+			</section>
+
+
+			<section data-background="#2A3990">
+				<h2>Import ElementRef wrapper.</h2>
+				<small>A wrapper around a native element inside of a View.</small>
+				<p class="skAlignedCode" >
+					<code class="hljs" style="word-wrap: break-word;font-size:0.5em">// bg-red.directive.ts</code>
+					<code class="hljs" style="word-wrap: break-word;font-size:0.5em">
+						import { Directive, <span class="fragment highlight-green">ElementRef</span> } from '@angular/core';
+						<br/><br/>
+						@Directive({
+							<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;selector: '[appBgRed]'
+						<br/>
+						})<br/><br/>
+
+						export class BgRedDirective {
+							<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;constructor(<span class="fragment highlight-green">private el: ElementRef</span>) {
+							<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="fragment highlight-green">this.el.nativeElement.style.backgroundColor = 'red';</span>
+							<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+						<br/>
+						}
+					</code>
+				</p>
+				<img class="fragment fade-up" data-src="imgs/attr_output.png">
+			</section>
+
+
+
+
+
+
+
+
+
+
+
+		</div>
+
+	</div>
+
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
+
+	<script>
+		// More info https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			controls: true,
+			progress: true,
+			history: true,
+			center: true,
+
+			transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+			// More info https://github.com/hakimel/reveal.js#dependencies
+			dependencies: [{
+					src: 'lib/js/classList.js',
+					condition: function () {
+						return !document.body.classList;
+					}
+				},
+				{
+					src: 'plugin/markdown/marked.js',
+					condition: function () {
+						return !!document.querySelector('[data-markdown]');
+					}
+				},
+				{
+					src: 'plugin/markdown/markdown.js',
+					condition: function () {
+						return !!document.querySelector('[data-markdown]');
+					}
+				},
+				{
+					src: 'plugin/highlight/highlight.js',
+					async: true,
+					callback: function () {
+						hljs.initHighlightingOnLoad();
+					}
+				},
+				{
+					src: 'plugin/search/search.js',
+					async: true
+				},
+				{
+					src: 'plugin/zoom-js/zoom.js',
+					async: true
+				},
+				{
+					src: 'plugin/notes/notes.js',
+					async: true
+				}
+			]
+		});
+	</script>
+
+</body>
+
+</html>
